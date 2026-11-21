@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เตยหอม (Pandanus amaryllidifolius) — สารานุกรมและคู่มือครบวงจร</title>
+    
+    <!-- โหลด Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- โหลด Google Fonts: Prompt และ Sarabun -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- ตั้งค่า Tailwind Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Sarabun', 'sans-serif'],
+                        display: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        pandan: {
+                            950: '#0D241B',
+                            900: '#1B4332',
+                            800: '#2D6A4F',
+                            700: '#40916C',
+                            600: '#52B788',
+                            400: '#74C69D',
+                            200: '#B7E4C7',
+                            100: '#D8F3DC',
+                            50:  '#F0FDF4',
+                        },
+                        cream: {
+                            50: '#FAF8F5',
+                            100: '#F4EFE6',
+                            200: '#E8DFD1',
+                        }
+                    },
+                    boxShadow: {
+                        'botanical': '0 10px 30px -10px rgba(27, 67, 50, 0.12)',
+                        'card-hover': '0 20px 40px -15px rgba(27, 67, 50, 0.18)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ปรับแต่ง Scrollbar และแอนิเมชันนุ่มนวล */
+        body {
+            background-color: #FAF8F5;
+            color: #1F2937;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Prompt', sans-serif;
+        }
+
+        /* แอนิเมชันลอยเบาๆ สำหรับภาพประกอบใบเตย */
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(0deg) translateY(0px); }
+            50% { transform: rotate(1.8deg) translateY(-6px); }
+        }
+        .animate-sway {
+            animation: gentleSway 6s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
+
+        /* แอนิเมชันเปลี่ยนแท็บ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-fade-in {
+            animation: fadeIn 0.35s ease-out forwards;
+        }
+
+        /* ปรับแต่ง Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #1B4332;
+            border: 3px solid #D8F3DC;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: transform 0.15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #B7E4C7;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-pandan-200 selection:text-pandan-900">
+
+    <!-- ==================== 1. แถบนำทาง (Sticky Navigation) ==================== -->
+    <header class="sticky top-0 z-50 bg-cream-50/90 backdrop-blur-md border-b border-pandan-900/10 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- โลโก้ -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 rounded-xl bg-pandan-900 text-pandan-100 flex items-center justify-center shadow-sm group-hover:bg-pandan-800 transition-colors">
+                        <!-- ไอคอนใบเตยขนาดเล็ก -->
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21c0-6-3-11-8-14 4 0 8 3 9 8 1-5 5-9 9-10-4 4-7 10-7 16h-3z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-heading font-semibold text-lg text-pandan-900 tracking-tight block leading-none">เตยหอม</span>
+                        <span class="text-[11px] text-pandan-700 tracking-wider uppercase font-medium">Pandanus Encyclopedia</span>
+                    </div>
+                </a>
+
+                <!-- เมนู Desktop -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="#botany" class="px-3.5 py-2 rounded-xl text-sm font-medium text-gray-700 hover:text-pandan-900 hover:bg-pandan-100/60 transition-colors">พฤกษศาสตร์และสารสำคัญ</a>
+                    <a href="#medicine" class="px-3.5 py-2 rounded-xl text-sm font-medium text-gray-700 hover:text-pandan-900 hover:bg-pandan-100/60 transition-colors">ภูมิปัญญาและงานวิจัย</a>
+                    <a href="#culinary" class="px-3.5 py-2 rounded-xl text-sm font-medium text-gray-700 hover:text-pandan-900 hover:bg-pandan-100/60 transition-colors">การทำอาหาร</a>
+                    <a href="#calculator" class="ml-2 px-4 py-2 rounded-xl text-sm font-heading font-medium bg-pandan-900 text-white hover:bg-pandan-800 shadow-sm transition-all flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-pandan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        คำนวณสัดส่วน
+                    </a>
+                </nav>
+
+                <!-- ปุ่มเมนู Mobile -->
+                <button id="mobile-menu-btn" aria-label="เปิดเมนู" class="md:hidden p-2.5 rounded-xl text-pandan-900 hover:bg-pandan-100/70 focus:outline-none">
+                    <svg id="menu-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- เมนู Dropdown สำหรับ Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-pandan-900/10 px-4 pt-2 pb-5 space-y-1.5 shadow-lg">
+            <a href="#botany" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-800 hover:bg-pandan-50 hover:text-pandan-900">1. พฤกษศาสตร์และสารสำคัญ</a>
+            <a href="#medicine" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-800 hover:bg-pandan-50 hover:text-pandan-900">2. ภูมิปัญญาและงานวิจัย</a>
+            <a href="#culinary" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-800 hover:bg-pandan-50 hover:text-pandan-900">3. การนำใบเตยมาทำอาหาร</a>
+            <a href="#calculator" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-heading font-medium bg-pandan-900 text-white text-center mt-2">เครื่องมือคำนวณสัดส่วนใบเตย</a>
+        </div>
+    </header>
+
+    <!-- ==================== 2. HERO SECTION ==================== -->
+    <section class="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 border-b border-pandan-900/10">
+        <!-- ลวดลายพื้นหลังอ่อนๆ -->
+        <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(#40916C 0.75px, transparent 0.75px); background-size: 28px 28px;"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-pandan-200/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-pandan-100/60 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+                
+                <!-- ข้อความฝั่งซ้าย -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pandan-100/90 border border-pandan-700/20 text-pandan-900 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-pandan-700 animate-pulse"></span>
+                        <span>ฉายา "วานิลลาแห่งเอเชีย" (Vanilla of Asia)</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-pandan-900 leading-tight tracking-tight">
+                        ใบเตยหอม<br>
+                        <span class="text-xl sm:text-3xl lg:text-4xl font-normal italic text-pandan-700 block mt-1">Pandanus amaryllidifolius</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        พืชที่นิยมใช้ในครัวไทยและเอเชียตะวันออกเฉียงใต้ มีกลิ่นหอมเฉพาะตัวจากสารระเหย <strong class="text-pandan-900 font-semibold">2-Acetyl-1-pyrroline</strong> และให้สีเขียวจากคลอโรฟิลล์ เหมาะสำหรับเพิ่มกลิ่น สี และเอกลักษณ์ให้เมนูอาหาร
+                    </p>
+
+                    <!-- ปุ่มทางลัดไปยังหมวดหมู่ -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                        <a href="#botany" class="px-5 py-3 rounded-2xl bg-pandan-900 text-white font-heading font-medium text-sm sm:text-base hover:bg-pandan-800 shadow-botanical transition-all">
+                            สำรวจข้อมูลพฤกษศาสตร์
+                        </a>
+                        <a href="#medicine" class="px-5 py-3 rounded-2xl bg-white text-pandan-900 border border-pandan-900/15 font-heading font-medium text-sm sm:text-base hover:bg-pandan-50 transition-all">
+                            ภูมิปัญญาและงานวิจัย
+                        </a>
+                        <a href="#culinary" class="px-5 py-3 rounded-2xl bg-white text-pandan-900 border border-pandan-900/15 font-heading font-medium text-sm sm:text-base hover:bg-pandan-50 transition-all">
+                            คู่มือทำอาหาร
+                        </a>
+                    </div>
+
+                    <!-- ข้อมูลสรุปสั้นๆ (Quick Facts) -->
+                    <div class="grid grid-cols-3 gap-3 sm:gap-6 pt-4 border-t border-pandan-900/10 max-w-xl mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">วงศ์ (Family)</p>
+                            <p class="font-heading font-semibold text-pandan-900 text-sm sm:text-base mt-0.5">Pandanaceae</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">สารให้กลิ่นหลัก</p>
+                            <p class="font-heading font-semibold text-pandan-900 text-sm sm:text-base mt-0.5">2AP (กลิ่นข้าวหอม)</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">ส่วนที่ใช้ประโยชน์</p>
+                            <p class="font-heading font-semibold text-pandan-900 text-sm sm:text-base mt-0.5">ใบ, ต้น, รากค้ำจุน</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <figure class="relative w-full max-w-sm sm:max-w-md aspect-[4/3] rounded-[2.5rem] border border-pandan-900/10 shadow-botanical">
+                        <img
+                            src="./image/Gemini_Generated_Image_9ixu8u9ixu8u9ixu%20(1).jpeg"
+                            alt="กอเตยหอมที่ปลูกเป็นพุ่มในสวน"
+                            class="absolute inset-0 w-full h-full object-cover rounded-[2.5rem]"
+                            width="1344"
+                            height="756"
+                            fetchpriority="high"
+                            decoding="async">
+                        <figcaption class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-xl text-xs text-pandan-900 font-medium shadow-sm">
+                            กอเตยหอมในแปลงปลูก
+                        </figcaption>
+                        <div class="absolute -bottom-5 -left-3 sm:-left-5 w-2/5 aspect-[4/3] overflow-hidden rounded-2xl border-4 border-white shadow-card-hover">
+                            <img
+                                src="./image/Gemini_Generated_Image_9ixu8u9ixu8u9ixu.jpeg"
+                                alt="ใบเตยสดที่มัดเป็นกำและเตรียมใช้ในครัว"
+                                class="w-full h-full object-cover"
+                                width="1152"
+                                height="864"
+                                loading="lazy"
+                                decoding="async">
+                        </div>
+                    </figure>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 3. พฤกษศาสตร์และสารสำคัญทางเคมี ==================== -->
+    <section id="botany" class="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-12">
+            <span class="text-pandan-700 font-heading font-semibold text-sm uppercase tracking-wider">01 / Botanical & Phytochemical Profile</span>
+            <h2 class="text-2xl sm:text-4xl font-bold text-pandan-900 mt-1">ลักษณะทางพฤกษศาสตร์และสารสำคัญ</h2>
+            <p class="text-gray-600 mt-3 text-base sm:text-lg leading-relaxed">
+                เตยหอมเป็นพืชล้มลุกยืนต้นขนาดเล็กในวงศ์เตยทะเล มีถิ่นกำเนิดในเอเชียตะวันออกเฉียงใต้ โดดเด่นด้วยโครงสร้างใบที่ไร้หนามและสารประกอบอินทรีย์ที่ให้กลิ่นหอมเฉพาะตัว
+            </p>
+        </div>
+
+        <!-- โครงสร้างทางพฤกษศาสตร์ 3 ส่วน -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <!-- ลำต้น -->
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-pandan-900/10 shadow-botanical hover:shadow-card-hover transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-pandan-100 text-pandan-900 flex items-center justify-center mb-5">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-4 4m4-4l4 4" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-pandan-900 mb-2">ลำต้นและเหง้า</h3>
+                <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    เป็นลำต้นใต้ดิน (เหง้า) หรือโผล่พ้นดินเพียงเล็กน้อย ลักษณะกลม มีข้อถี่ แตกหน่อใหม่รอบกอได้รวดเร็ว ทำให้ขยายพันธุ์ด้วยการแยกหน่อได้ง่าย
+                </p>
+            </div>
+
+            <!-- ใบ -->
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-pandan-900/10 shadow-botanical hover:shadow-card-hover transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-pandan-100 text-pandan-900 flex items-center justify-center mb-5">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-pandan-900 mb-2">ใบเดี่ยวเรียวยาว</h3>
+                <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    ใบเรียงเวียนสลับเป็นเกลียวรอบต้น แผ่นใบเรียวยาวคล้ายใบหอก ปลายแหลม <strong>ขอบใบเรียบไม่มีหนาม</strong> (ต่างจากเตยทะเล) สีเขียวเข้มเป็นมันเงา และพับเป็นร่องตรงกลางใบ
+                </p>
+            </div>
+
+            <!-- รากค้ำจุน -->
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-pandan-900/10 shadow-botanical hover:shadow-card-hover transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-pandan-100 text-pandan-900 flex items-center justify-center mb-5">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-pandan-900 mb-2">รากค้ำจุน (Prop Roots)</h3>
+                <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    รากอากาศขนาดใหญ่ที่งอกออกจากข้อบริเวณโคนต้นเฉียงลงสู่พื้นดิน ทำหน้าที่ค้ำจุนลำต้นไม่ให้ล้ม และ                    มีการกล่าวถึงการใช้ในตำรับพื้นบ้าน แต่ไม่ใช่หลักฐานยืนยันผลทางการแพทย์
+                </p>
+            </div>
+        </div>
+
+        <!-- การ์ดเจาะลึกสารสำคัญทางเคมี 2 ชนิด -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- สาร 2AP -->
+            <div class="rounded-3xl bg-pandan-900 text-white p-7 sm:p-8 relative overflow-hidden shadow-botanical">
+                <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-pandan-700/30 pointer-events-none"></div>
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pandan-800 text-pandan-200 text-xs font-medium mb-4">
+                        <span>Aroma Compound • สารระเหยให้กลิ่นหอม</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">2-Acetyl-1-pyrroline (2AP)</h3>
+                    <p class="text-pandan-100/90 text-sm sm:text-base leading-relaxed mb-5">
+                        สารประกอบอินทรีย์ระเหยง่ายที่สร้างกลิ่นหอมนุ่มนวลอันเป็นเอกลักษณ์ของใบเตย ซึ่งเป็น<strong>สารชนิดเดียวกับที่พบในข้าวหอมมะลิไทย</strong> ขนมปังอบใหม่ และป๊อปคอร์น
+                    </p>
+                    <div class="bg-pandan-950/60 rounded-2xl p-4 border border-pandan-700/40 text-xs sm:text-sm text-pandan-200 space-y-1.5">
+                        <p><strong class="text-white">• คุณสมบัติทางความร้อน:</strong> สาร 2AP ระเหยได้ง่ายเมื่อโดนความร้อนสูงเป็นเวลานาน การฉีกหรือขยี้ใบก่อนต้มจะช่วยให้ต่อมกลิ่นปลดปล่อยสารได้ดียิ่งขึ้น</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- สาร Chlorophyll & Beta-carotene -->
+            <div class="rounded-3xl bg-white border border-pandan-900/15 p-7 sm:p-8 relative overflow-hidden shadow-botanical">
+                <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-pandan-100/70 pointer-events-none"></div>
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pandan-100 text-pandan-900 text-xs font-medium mb-4">
+                        <span>Natural Pigments • รงควัตถุธรรมชาติ</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-pandan-900 mb-2">Chlorophyll & Beta-carotene</h3>
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed mb-5">
+                        สีเขียวเข้มสดใสของใบเตยเกิดจากสาร <strong>คลอโรฟิลล์ (Chlorophyll a และ b)</strong> ผสานกับ <strong>เบต้าแคโรทีน (Beta-carotene)</strong> ซึ่งทำหน้าที่เป็นสารต้านอนุมูลอิสระและสีผสมอาหารจากธรรมชาติ
+                    </p>
+                    <div class="bg-cream-50 rounded-2xl p-4 border border-pandan-900/10 text-xs sm:text-sm text-gray-700 space-y-1.5">
+                        <p><strong class="text-pandan-900">• ปัจจัยการเปลี่ยนสี:</strong> เมื่อโดนกรดหรือความร้อนจัดนานเกินไป โมเลกุลคลอโรฟิลล์จะสูญเสียแมกนีเซียมและเปลี่ยนเป็นสาร <em>Pheophytin</em> ทำให้สีเขียวสดกลายเป็นสีเขียวมะกอกหรือน้ำตาลหม่น</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 4. สรรพคุณทางยา (Interactive Tabs) ==================== -->
+    <section id="medicine" class="py-16 sm:py-24 bg-white border-y border-pandan-900/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-pandan-700 font-heading font-semibold text-sm uppercase tracking-wider">02 / Traditional Use & Preclinical Studies</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-pandan-900 mt-1">ภูมิปัญญาพื้นบ้านและงานวิจัย</h2>
+                    <p class="text-gray-600 mt-3 text-base sm:text-lg">
+                        แยกการใช้ตามภูมิปัญญาพื้นบ้านออกจากผลการศึกษาในสัตว์ทดลองและห้องปฏิบัติการ ซึ่งยังไม่ใช่หลักฐานยืนยันผลรักษาในมนุษย์
+                    </p>
+                </div>
+
+                <!-- ปุ่มสลับแท็บ (Interactive Tabs) -->
+                <div class="inline-flex p-1.5 rounded-2xl bg-cream-100 border border-pandan-900/10 self-start md:self-auto" role="tablist">
+                    <button id="tab-traditional" role="tab" aria-selected="true" onclick="switchMedTab('traditional')"
+                        class="px-4 sm:px-5 py-2.5 rounded-xl font-heading font-medium text-sm transition-all bg-pandan-900 text-white shadow-sm">
+                        ภูมิปัญญาพื้นบ้าน
+                    </button>
+                    <button id="tab-modern" role="tab" aria-selected="false" onclick="switchMedTab('modern')"
+                        class="px-4 sm:px-5 py-2.5 rounded-xl font-heading font-medium text-sm transition-all text-gray-700 hover:text-pandan-900">
+                        งานวิจัยก่อนคลินิก
+                    </button>
+                </div>
+            </div>
+
+            <!-- เนื้อหาแท็บ 1: ตำรายาแผนโบราณ -->
+            <div id="content-traditional" class="tab-fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- การ์ดใบสดและใบแห้ง -->
+                    <div class="rounded-3xl bg-cream-50 p-7 border border-pandan-900/10">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="w-10 h-10 rounded-xl bg-pandan-900 text-white flex items-center justify-center font-heading font-bold">01</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-pandan-900">การใช้ใบตามภูมิปัญญาพื้นบ้าน</h3>
+                                <p class="text-xs text-pandan-700 font-medium">บันทึกการใช้ ไม่ใช่ข้อสรุปทางคลินิก</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 text-gray-700 text-sm sm:text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="w-5 h-5 rounded-full bg-pandan-200 text-pandan-900 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                                <div>
+                                    <strong class="text-pandan-900 block">ใช้แต่งกลิ่นอาหารและเครื่องดื่ม:</strong>
+                                    ใบเตยนิยมใช้เพิ่มกลิ่นในอาหารและเครื่องดื่ม การใช้เป็นอาหารไม่ใช่หลักฐานว่ารักษาอาการอ่อนเพลีย ใจสั่น หรือโรคหัวใจได้
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-5 h-5 rounded-full bg-pandan-200 text-pandan-900 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                                <div>
+                                    <strong class="text-pandan-900 block">การใช้เป็นเครื่องดื่มพื้นบ้าน:</strong>
+                                    มีการนำใบเตยต้มเป็นเครื่องดื่ม แต่ไม่ควรกล่าวอ้างว่าใช้ลดไข้หรือรักษาโรคโดยไม่มีหลักฐานทางคลินิก
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-5 h-5 rounded-full bg-pandan-200 text-pandan-900 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                                <div>
+                                    <strong class="text-pandan-900 block">การใช้ภายนอกตามตำรับ:</strong>
+                                    การใช้ใบพอกผิวเป็นภูมิปัญญาพื้นบ้าน ไม่ใช่การรักษาผื่นหรือการอักเสบที่ผ่านการยืนยัน
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- การ์ดต้นและราก -->
+                    <div class="rounded-3xl bg-cream-50 p-7 border border-pandan-900/10">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="w-10 h-10 rounded-xl bg-pandan-700 text-white flex items-center justify-center font-heading font-bold">02</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-pandan-900">ข้อมูลการใช้ส่วนต้นและราก</h3>
+                                <p class="text-xs text-pandan-700 font-medium">ไม่แนะนำให้ใช้รักษาโรคด้วยตนเอง</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 text-gray-700 text-sm sm:text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="w-5 h-5 rounded-full bg-pandan-200 text-pandan-900 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                                <div>
+                                    <strong class="text-pandan-900 block">ตำรับพื้นบ้าน:</strong>
+                                    มีการกล่าวถึงการใช้ส่วนต้นหรือรากในตำรับพื้นบ้าน แต่ข้อมูลนี้ไม่ยืนยันผลขับปัสสาวะหรือรักษาอาการปัสสาวะขัด
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-5 h-5 rounded-full bg-pandan-200 text-pandan-900 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                                <div>
+                                    <strong class="text-pandan-900 block">ไม่มีขนาดรักษาที่แนะนำในหน้านี้:</strong>
+                                    ไม่ควรใช้รากหรือสารสกัดเข้มข้นเพื่อควบคุมเบาหวาน หรือปรับ/หยุดยาที่แพทย์สั่ง
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- เนื้อหาแท็บ 2: งานวิจัยเภสัชวิทยาสมัยใหม่ -->
+            <div id="content-modern" class="hidden tab-fade-in">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- ผลการศึกษาก่อนคลินิก -->
+                    <div class="rounded-3xl bg-cream-50 p-6 border border-pandan-900/10">
+                        <span class="inline-block px-2.5 py-1 rounded-lg bg-pandan-100 text-pandan-900 text-xs font-semibold mb-3">Animal study</span>
+                        <h3 class="text-lg font-bold text-pandan-900 mb-2">การศึกษาในสัตว์ทดลอง</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            มีงานศึกษาสารสกัดน้ำจากใบเตยในแบบจำลองหนูที่ถูกเหนี่ยวนำให้เกิดภาวะเมแทบอลิก งานในสัตว์ไม่ยืนยันว่าการกินใบเตยรักษาเบาหวานหรือให้ผลเช่นเดียวกันในคน
+                        </p>
+                    </div>
+
+                    <!-- ผลทดสอบสารสกัด -->
+                    <div class="rounded-3xl bg-cream-50 p-6 border border-pandan-900/10">
+                        <span class="inline-block px-2.5 py-1 rounded-lg bg-pandan-100 text-pandan-900 text-xs font-semibold mb-3">In vitro</span>
+                        <h3 class="text-lg font-bold text-pandan-900 mb-2">การทดสอบสารสกัด</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            งานทดลองบางชิ้นประเมินฤทธิ์ต้านอนุมูลอิสระและจุลชีพของสารสกัดในห้องปฏิบัติการ ผลดังกล่าวไม่ใช่หลักฐานว่าป้องกันหรือรักษาโรคในมนุษย์
+                        </p>
+                    </div>
+
+                    <!-- ข้อจำกัดของงานศึกษา -->
+                    <div class="rounded-3xl bg-cream-50 p-6 border border-pandan-900/10">
+                        <span class="inline-block px-2.5 py-1 rounded-lg bg-pandan-100 text-pandan-900 text-xs font-semibold mb-3">Evidence limits</span>
+                        <h3 class="text-lg font-bold text-pandan-900 mb-2">สารสกัดไม่เท่ากับอาหาร</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            ชนิดตัวทำละลาย ความเข้มข้น และส่วนของพืชที่ใช้ในการทดลองต่างจากการใช้ใบเตยปรุงอาหาร จึงไม่ควรนำผลมาอนุมานเป็นประโยชน์ต่อสุขภาพโดยตรง
+                        </p>
+                    </div>
+
+                    <!-- หลักฐานในมนุษย์ -->
+                    <div class="rounded-3xl bg-cream-50 p-6 border border-pandan-900/10">
+                        <span class="inline-block px-2.5 py-1 rounded-lg bg-pandan-100 text-pandan-900 text-xs font-semibold mb-3">Clinical evidence</span>
+                        <h3 class="text-lg font-bold text-pandan-900 mb-2">ยังใช้ยืนยันผลรักษาไม่ได้</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            งานอ้างอิงด้านล่างเป็นบทความทบทวน งานในสัตว์ และงานทดลองในห้องปฏิบัติการ ไม่ใช่คำแนะนำให้ใช้เตยหอมแทนการตรวจหรือการรักษาจากบุคลากรทางการแพทย์
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-3xl bg-cream-50 border border-pandan-900/10 p-6 sm:p-7">
+                <h3 class="font-heading font-bold text-pandan-900 text-lg mb-3">อ่านเพิ่มเติมและแหล่งอ้างอิง</h3>
+                <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                    <li>
+                        Wang W, et al. “Botany, phytochemistry, pharmacology, and applications of Pandanus amaryllifolius Roxb.: A review.” <em>Fitoterapia</em> (2024).
+                        <a class="text-pandan-800 underline" href="https://pubmed.ncbi.nlm.nih.gov/39053743/" target="_blank" rel="noopener noreferrer">PubMed PMID 39053743</a>
+                    </li>
+                    <li>
+                        Reshidan NH, et al. “The effects of Pandanus amaryllifolius (Roxb.) leaf water extracts on fructose-induced metabolic syndrome rat model.” <em>BMC Complementary and Alternative Medicine</em> (2019).
+                        <a class="text-pandan-800 underline" href="https://pubmed.ncbi.nlm.nih.gov/31462242/" target="_blank" rel="noopener noreferrer">PubMed PMID 31462242</a>
+                    </li>
+                    <li>
+                        Wahyuni DK, et al. งานทดสอบฤทธิ์ต้านอนุมูลอิสระและจุลชีพของสารสกัดเอทานอล ทั้งในหลอดทดลองและการวิเคราะห์เชิงคอมพิวเตอร์ (2024).
+                        <a class="text-pandan-800 underline" href="https://pubmed.ncbi.nlm.nih.gov/39141632/" target="_blank" rel="noopener noreferrer">PubMed PMID 39141632</a>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- กล่องแจ้งเตือนข้อควรระวังทางการแพทย์ (Medical Disclaimer) -->
+            <div class="mt-8 rounded-3xl bg-amber-50/90 border border-amber-300/80 p-6 sm:p-7 flex flex-col sm:flex-row gap-4 items-start">
+                <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <div class="space-y-1.5 text-sm sm:text-base">
+                    <h4 class="font-bold text-amber-950">ข้อควรระวังและคำแนะนำทางการแพทย์</h4>
+                    <p class="text-amber-900/90 leading-relaxed">
+                        <strong>1. ใช้เพื่อการศึกษา:</strong> เนื้อหานี้ไม่ใช่คำแนะนำ วินิจฉัย หรือรักษาโรค ผลจากงานทบทวน งานในสัตว์ หรือการทดลองในห้องปฏิบัติการไม่ยืนยันประสิทธิผลในมนุษย์
+                    </p>
+                    <p class="text-amber-900/90 leading-relaxed">
+                        <strong>2. การใช้สารสกัดหรือใช้เพื่อรักษา:</strong> อย่าหยุดหรือปรับยาที่แพทย์สั่ง และควรปรึกษาแพทย์หรือเภสัชกรก่อนใช้สารสกัด/ผลิตภัณฑ์เข้มข้น โดยเฉพาะผู้มีโรคประจำตัว ผู้ตั้งครรภ์ หรือผู้ให้นมบุตร
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 5. การนำใบเตยมาทำอาหาร ==================== -->
+    <section id="culinary" class="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-10">
+            <span class="text-pandan-700 font-heading font-semibold text-sm uppercase tracking-wider">03 / Culinary Arts & Techniques</span>
+            <h2 class="text-2xl sm:text-4xl font-bold text-pandan-900 mt-1">ศาสตร์แห่งการนำใบเตยมาทำอาหาร</h2>
+            <p class="text-gray-600 mt-3 text-base sm:text-lg">
+                ใบเตยทำหน้าที่ทั้งแต่งสีเขียวธรรมชาติ ชูกลิ่นหอมละมุน และเป็นภาชนะห่อหุ้มความชุ่มฉ่ำให้กับอาหารไทยตั้งแต่อดีตจนถึงปัจจุบัน
+            </p>
+        </div>
+
+        <!-- 4 วิธีเตรียมใบเตย -->
+        <div class="mb-14">
+            <h3 class="text-lg font-bold text-pandan-900 mb-4 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-pandan-700"></span>
+                4 รูปแบบการเตรียมใบเตยในครัวไทย
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white rounded-2xl p-5 border border-pandan-900/10 shadow-sm">
+                    <span class="text-xs font-heading font-semibold text-pandan-700">วิธีที่ 01</span>
+                    <h4 class="font-bold text-pandan-900 text-base mt-1 mb-1.5">มัดเป็นกำหรือขมวดปม</h4>
+                    <p class="text-sm text-gray-600">ใช้ต้มในน้ำเชื่อม น้ำกะทิ แกง หรือหุงพร้อมข้าว ช่วยกระจายกลิ่นหอมสม่ำเสมอและตักออกง่าย</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-pandan-900/10 shadow-sm">
+                    <span class="text-xs font-heading font-semibold text-pandan-700">วิธีที่ 02</span>
+                    <h4 class="font-bold text-pandan-900 text-base mt-1 mb-1.5">ปั่นคั้นน้ำสีเขียวเข้ม</h4>
+                    <p class="text-sm text-gray-600">หั่นท่อนปั่นกับน้ำสะอาดหรือกะทิ กรองด้วยผ้าขาวบาง ใช้แต่งสีและกลิ่นในขนมไทยและเครื่องดื่ม</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-pandan-900/10 shadow-sm">
+                    <span class="text-xs font-heading font-semibold text-pandan-700">วิธีที่ 03</span>
+                    <h4 class="font-bold text-pandan-900 text-base mt-1 mb-1.5">หั่นฝอยหรือซอยละเอียด</h4>
+                    <p class="text-sm text-gray-600">ซอยเป็นเส้นบางๆ ผสมในเนื้อแป้งขนม ทอดกรอบโรยหน้าอาหาร หรืออบรวมกับใบชา</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-pandan-900/10 shadow-sm">
+                    <span class="text-xs font-heading font-semibold text-pandan-700">วิธีที่ 04</span>
+                    <h4 class="font-bold text-pandan-900 text-base mt-1 mb-1.5">ห่อวัตถุดิบหรือพับกระทง</h4>
+                    <p class="text-sm text-gray-600">ใช้ใบยาวเหนียวห่อเนื้อสัตว์ก่อนทอด/อบ เพื่อกักเก็บความฉ่ำ หรือพับเป็นกระทงใส่ขนมตะโก้</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ระบบกรองหมวดหมู่เมนูอาหารและขนม -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <h3 class="text-xl font-bold text-pandan-900">เมนูยอดนิยมจากใบเตย</h3>
+            <div class="flex flex-wrap gap-2" id="culinary-filters">
+                <button onclick="filterRecipes('all')" data-filter="all" class="filter-btn px-4 py-2 rounded-xl text-sm font-heading font-medium bg-pandan-900 text-white shadow-sm transition-all">
+                    ทั้งหมด (6)
+                </button>
+                <button onclick="filterRecipes('savory')" data-filter="savory" class="filter-btn px-4 py-2 rounded-xl text-sm font-heading font-medium bg-white text-gray-700 border border-pandan-900/15 hover:bg-pandan-50 transition-all">
+                    อาหารคาว
+                </button>
+                <button onclick="filterRecipes('dessert')" data-filter="dessert" class="filter-btn px-4 py-2 rounded-xl text-sm font-heading font-medium bg-white text-gray-700 border border-pandan-900/15 hover:bg-pandan-50 transition-all">
+                    ขนมไทย
+                </button>
+                <button onclick="filterRecipes('drink')" data-filter="drink" class="filter-btn px-4 py-2 rounded-xl text-sm font-heading font-medium bg-white text-gray-700 border border-pandan-900/15 hover:bg-pandan-50 transition-all">
+                    เครื่องดื่ม
+                </button>
+            </div>
+        </div>
+
+        <!-- การ์ดแสดงเมนูอาหาร (Render ด้วย JS) -->
+        <div id="recipe-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            <!-- เนื้อหาการ์ดจะถูกสร้างอัตโนมัติ -->
+        </div>
+
+        <!-- กล่องเคล็ดลับการรักษาสีเขียวสด -->
+        <div class="rounded-3xl bg-pandan-100/70 border border-pandan-700/20 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="space-y-2 max-w-3xl">
+                <span class="inline-block px-3 py-1 rounded-full bg-pandan-900 text-white text-xs font-medium">Pro Kitchen Tip</span>
+                <h4 class="text-xl font-bold text-pandan-900">เคล็ดลับคั้นน้ำใบเตยให้สีเขียวสด ไม่เปลี่ยนเป็นสีน้ำตาลคล้ำ</h4>
+                <p class="text-sm sm:text-base text-pandan-950/85 leading-relaxed">
+                    1) เลือกใบเตยไม่อ่อนหรือแก่เกินไป ตัดส่วนโคนสีขาวออกเพราะมีรสขมเฝื่อน • 2) ปั่นกับน้ำเย็นจัดเพื่อลดความร้อนจากใบมีดเครื่องปั่น • 3) <strong>ใส่ในขั้นตอนท้ายๆ ของการกวนหรือต้ม</strong> และหลีกเลี่ยงการใช้ไฟแรงจัดเป็นเวลานาน เพื่อรักษาโครงสร้างคลอโรฟิลล์และสารหอม 2AP ให้คงอยู่ครบถ้วน
+                </p>
+            </div>
+            <a href="#calculator" class="shrink-0 px-5 py-3 rounded-2xl bg-pandan-900 text-white font-heading font-medium text-sm hover:bg-pandan-800 transition-colors shadow-sm">
+                คำนวณสัดส่วนคั้นน้ำ &rarr;
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== 6. เครื่องมือคำนวณสัดส่วนใบเตย (Interactive Calculator) ==================== -->
+    <section id="calculator" class="py-16 sm:py-24 bg-pandan-950 text-white relative overflow-hidden">
+        <!-- แสงตกแต่ง -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-pandan-800/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-pandan-700/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-pandan-400 font-heading font-semibold text-sm uppercase tracking-wider">04 / Interactive Kitchen Tool</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white mt-1">เครื่องมือคำนวณสัดส่วนใบเตย</h2>
+                <p class="text-pandan-200/90 mt-3 text-base sm:text-lg">
+                    เลือกวัตถุประสงค์และปรับปริมาณที่ต้องการ เพื่อคำนวณน้ำหนักใบเตยสด ปริมาณน้ำ และขั้นตอนการทำที่แม่นยำ
+                </p>
+            </div>
+
+            <div class="bg-white text-gray-800 rounded-[2rem] p-6 sm:p-10 shadow-2xl border border-pandan-700/30">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- ฝั่งตั้งค่า (ซ้าย) -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div>
+                            <label class="block font-heading font-semibold text-pandan-900 text-sm mb-3">1. เลือกวัตถุประสงค์การใช้งาน</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="calc-purpose-group">
+                                <button type="button" onclick="setCalcPurpose('tea')" data-purpose="tea"
+                                    class="purpose-btn p-3.5 rounded-2xl border-2 border-pandan-900 bg-pandan-50 text-pandan-900 text-left transition-all">
+                                    <span class="block font-heading font-bold text-sm">ต้มน้ำใบเตย</span>
+                                    <span class="block text-xs text-pandan-700 mt-0.5">เครื่องดื่มเพื่อสุขภาพ</span>
+                                </button>
+                                <button type="button" onclick="setCalcPurpose('extract')" data-purpose="extract"
+                                    class="purpose-btn p-3.5 rounded-2xl border-2 border-gray-200 bg-white text-gray-700 hover:border-pandan-400 text-left transition-all">
+                                    <span class="block font-heading font-bold text-sm">คั้นน้ำเข้มข้น</span>
+                                    <span class="block text-xs text-gray-500 mt-0.5">ทำขนมไทย/สังขยา</span>
+                                </button>
+                                <button type="button" onclick="setCalcPurpose('rice')" data-purpose="rice"
+                                    class="purpose-btn p-3.5 rounded-2xl border-2 border-gray-200 bg-white text-gray-700 hover:border-pandan-400 text-left transition-all">
+                                    <span class="block font-heading font-bold text-sm">หุงข้าวหอมใบเตย</span>
+                                    <span class="block text-xs text-gray-500 mt-0.5">เพิ่มกลิ่นหอมนุ่ม</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- ตัวเลื่อนปรับปริมาณ -->
+                        <div class="bg-cream-50 p-5 rounded-2xl border border-pandan-900/10">
+                            <div class="flex items-center justify-between mb-3">
+                                <label for="calc-slider" id="calc-slider-label" class="font-heading font-semibold text-pandan-900 text-sm">
+                                    2. จำนวนแก้วที่ต้องการ (250 มล./แก้ว)
+                                </label>
+                                <span id="calc-slider-value" class="px-3 py-1 rounded-xl bg-pandan-900 text-white font-heading font-bold text-base">
+                                    4 แก้ว
+                                </span>
+                            </div>
+                            <input id="calc-slider" type="range" min="1" max="12" value="4" oninput="updateCalculator()" class="w-full my-2">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1" id="calc-slider-ticks">
+                                <span>1 แก้ว</span>
+                                <span>6 แก้ว</span>
+                                <span>12 แก้ว</span>
+                            </div>
+                        </div>
+
+                        <!-- ปุ่มคัดลอกสูตร -->
+                        <button type="button" onclick="copyRecipeResult()" id="copy-btn"
+                            class="w-full py-3.5 px-5 rounded-2xl bg-pandan-100 hover:bg-pandan-200 text-pandan-900 font-heading font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            <span id="copy-btn-text">คัดลอกสัดส่วนและวิธีทำ</span>
+                        </button>
+                    </div>
+
+                    <!-- ฝั่งแสดงผลลัพธ์แบบเรียลไทม์ (ขวา) -->
+                    <div class="lg:col-span-6 bg-cream-50 rounded-3xl p-6 sm:p-7 border border-pandan-900/15 space-y-5">
+                        <div class="flex items-center justify-between border-b border-pandan-900/10 pb-3">
+                            <span class="text-xs font-heading font-semibold uppercase tracking-wider text-pandan-700">สัดส่วนที่แนะนำ</span>
+                            <span id="calc-badge" class="px-2.5 py-1 rounded-lg bg-pandan-200/70 text-pandan-900 text-xs font-semibold">สูตรไม่เติมน้ำตาล</span>
+                        </div>
+
+                        <!-- ตัวเลขผลลัพธ์ 2 ช่องหลัก -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-2xl border border-pandan-900/10 shadow-sm">
+                                <span class="text-xs text-gray-500 block">ใบเตยสด (ล้างสะอาด)</span>
+                                <span id="res-pandan-weight" class="text-2xl sm:text-3xl font-bold text-pandan-900 font-heading block mt-1">50 กรัม</span>
+                                <span id="res-pandan-leaves" class="text-xs text-pandan-700 font-medium block mt-0.5">ประมาณ 5–6 ใบกลาง</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-2xl border border-pandan-900/10 shadow-sm">
+                                <span id="res-liquid-title" class="text-xs text-gray-500 block">ปริมาณน้ำสะอาด</span>
+                                <span id="res-liquid-amount" class="text-2xl sm:text-3xl font-bold text-pandan-900 font-heading block mt-1">1,100 มล.</span>
+                                <span id="res-liquid-note" class="text-xs text-gray-500 block mt-0.5">เผื่อระเหยขณะต้ม 10%</span>
+                            </div>
+                        </div>
+
+                        <!-- คำแนะนำขั้นตอนการทำ -->
+                        <div class="bg-white p-4 sm:p-5 rounded-2xl border border-pandan-900/10">
+                            <h4 class="font-heading font-bold text-pandan-900 text-sm mb-2 flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-pandan-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                ขั้นตอนการเตรียมและปรุง
+                            </h4>
+                            <p id="res-instructions" class="text-sm text-gray-700 leading-relaxed">
+                                หั่นใบเตยเป็นท่อนสั้นหรือขมวดปม ใส่ลงในน้ำเดือดจัดแล้วลดเป็นไฟอ่อน ต้มต่อ 10–15 นาทีจนได้กลิ่นหอมและน้ำเปลี่ยนเป็นสีเขียวอ่อน จากนั้นตักใบเตยออก (หากต้องการความหวาน แนะนำเติมน้ำตาลหล่อฮังก๊วยหรือน้ำผึ้งเล็กน้อย)
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 7. FOOTER & วิธีเก็บรักษา ==================== -->
+    <footer class="bg-cream-100 border-t border-pandan-900/10 pt-14 pb-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-pandan-900/10">
+                <!-- สรุปข้อมูลเว็บ -->
+                <div class="md:col-span-5 space-y-3">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-lg bg-pandan-900 text-pandan-100 flex items-center justify-center">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21c0-6-3-11-8-14 4 0 8 3 9 8 1-5 5-9 9-10-4 4-7 10-7 16h-3z"/>
+                            </svg>
+                        </div>
+                        <span class="font-heading font-bold text-lg text-pandan-900">สารานุกรมใบเตยหอม</span>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        แหล่งรวบรวมองค์ความรู้เกี่ยวกับ <span class="italic">Pandanus amaryllidifolius</span> ทั้งในด้านพฤกษศาสตร์ เภสัชวิทยา ภูมิปัญญาการแพทย์แผนไทย และศิลปะการปรุงอาหาร เพื่อการนำไปใช้อย่างถูกต้องและเกิดประโยชน์สูงสุด
+                    </p>
+                </div>
+
+                <!-- วิธีเก็บรักษาใบเตยสดให้หอมนาน -->
+                <div class="md:col-span-7 bg-white rounded-3xl p-6 border border-pandan-900/10">
+                    <h3 class="font-heading font-bold text-pandan-900 text-base mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-pandan-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                        </svg>
+                        เคล็ดลับการเก็บรักษาใบเตยสดให้หอมนาน
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm text-gray-600">
+                        <div>
+                            <strong class="text-pandan-900 block mb-1">1. แช่ตู้เย็น (นาน 1–2 สัปดาห์)</strong>
+                            ล้างน้ำให้สะอาด ซับให้แห้งสนิท ห่อด้วยกระดาษทิชชูอเนกประสงค์ แล้วใส่ถุงซิปล็อกไล่อากาศออกก่อนแช่ช่องผัก
+                        </div>
+                        <div>
+                            <strong class="text-pandan-900 block mb-1">2. แช่แข็งก้อนน้ำใบเตย (นาน 3 เดือน)</strong>
+                            ปั่นคั้นน้ำใบเตยเข้มข้น เทใส่พิมพ์น้ำแข็งแช่ช่องฟรีซ หยิบใช้ทำขนมหรือเครื่องดื่มได้ทันทีโดยสีและกลิ่นยังสดใหม่
+                        </div>
+                        <div>
+                            <strong class="text-pandan-900 block mb-1">3. ตากแห้งทำชา (นาน 6 เดือน)</strong>
+                            หั่นใบเตยเป็นเส้นฝอย ผึ่งลมหรืออบอุณหภูมิต่ำ (50°C) จนแห้งสนิท เก็บในขวดโหลทึบแสงสำหรับชงดื่ม
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-3">
+                <p>© สารานุกรมใบเตยหอม (Pandanus amaryllidifolius) — จัดทำเพื่อการเรียนรู้และอ้างอิงด้านพฤกษศาสตร์และอาหาร</p>
+                <div class="flex gap-4">
+                    <a href="#botany" class="hover:text-pandan-900">พฤกษศาสตร์</a>
+                    <a href="#medicine" class="hover:text-pandan-900">ภูมิปัญญาและงานวิจัย</a>
+                    <a href="#culinary" class="hover:text-pandan-900">การทำอาหาร</a>
+                    <a href="#calculator" class="hover:text-pandan-900">คำนวณสัดส่วน</a>
+                </div>
+                <p class="text-xs text-gray-600">
+                    <a href="https://microtronic.biz/" rel="noopener noreferrer">Powered by Microtronic © 2026 Microtronic Co., Ltd.</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- กล่องข้อความแจ้งเตือน (Toast Notification แทน alert) -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-pandan-900 text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-2.5 text-sm font-medium border border-pandan-700">
+            <svg class="w-5 h-5 text-pandan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span id="toast-message">คัดลอกข้อมูลเรียบร้อยแล้ว</span>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // 1. จัดการเมนู Mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                iconOpen.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+            }
+        });
+
+        // ปิดเมนูอัตโนมัติเมื่อคลิกลิงก์บนมือถือ
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+            });
+        });
+
+        // 2. สลับแท็บสรรพคุณทางยา (ตำรายาแผนโบราณ vs งานวิจัยสมัยใหม่)
+        function switchMedTab(tabName) {
+            const btnTrad = document.getElementById('tab-traditional');
+            const btnMod = document.getElementById('tab-modern');
+            const contentTrad = document.getElementById('content-traditional');
+            const contentMod = document.getElementById('content-modern');
+
+            if (tabName === 'traditional') {
+                btnTrad.className = 'px-4 sm:px-5 py-2.5 rounded-xl font-heading font-medium text-sm transition-all bg-pandan-900 text-white shadow-sm';
+                btnTrad.setAttribute('aria-selected', 'true');
+                btnMod.className = 'px-4 sm:px-5 py-2.5 rounded-xl font-heading font-medium text-sm transition-all text-gray-700 hover:text-pandan-900';
+                btnMod.setAttribute('aria-selected', 'false');
+
+                contentTrad.classList.remove('hidden');
+                contentMod.classList.add('hidden');
+            } else {
+                btnMod.className = 'px-4 sm:px-5 py-2.5 rounded-xl font-heading font-medium text-sm transition-all bg-pandan-900 text-white shadow-sm';
+                btnMod.setAttribute('aria-selected', 'true');
+                btnTrad.className = 'px-4 sm:px-5 py-2.5 rounded-xl font-heading font-medium text-sm transition-all text-gray-700 hover:text-pandan-900';
+                btnTrad.setAttribute('aria-selected', 'false');
+
+                contentMod.classList.remove('hidden');
+                contentTrad.classList.add('hidden');
+            }
+        }
+
+        // 3. ข้อมูลเมนูอาหารและระบบกรองหมวดหมู่
+        const recipesData = [
+            {
+                title: 'ไก่ห่อใบเตย',
+                category: 'savory',
+                categoryLabel: 'อาหารคาว',
+                role: 'ใช้ใบเตยสดห่อหุ้มเนื้อไก่หมักเครื่องเทศ',
+                technique: 'เลือกใบเตยขนาดกว้างและยาวพอเหมาะ ลวกน้ำร้อนสั้นๆ 5 วินาทีให้ใบนิ่มพับง่ายไม่แตก ห่อเนื้อไก่ให้มิดชิดแล้วทอดด้วยไฟปานกลาง ช่วยกักเก็บน้ำในเนื้อไก่ให้นุ่มฉ่ำและหอมกลิ่นใบเตยซึมเข้าเนื้อ'
+            },
+            {
+                title: 'ขนมชั้นใบเตย',
+                category: 'dessert',
+                categoryLabel: 'ขนมไทย',
+                role: 'ใช้น้ำใบเตยคั้นสดแต่งสีเขียวและกลิ่นหอม',
+                technique: 'ผสมน้ำใบเตยคั้นเข้มข้นลงในแป้งมันสำปะหลัง แป้งท้าวยายม่อม และหัวกะทิ นึ่งสลับชั้นสีขาวและสีเขียวทีละชั้น ใช้ไฟปานกลางค่อนข้างอ่อนเพื่อไม่ให้สีเขียวของคลอโรฟิลล์หมองคล้ำ'
+            },
+            {
+                title: 'สังขยาใบเตย',
+                category: 'dessert',
+                categoryLabel: 'ขนมไทย',
+                role: 'ใช้ทั้งน้ำคั้นใบเตยและใบสดขยำกับไข่และกะทิ',
+                technique: 'ขยำใบเตยสดกับไข่ไก่และหัวกะทิเพื่อดับกลิ่นคาวไข่ กรองผ่านกระชอนตาถี่แล้วกวนบนหม้อตุ๋น (Double Boiler) ด้วยไฟอ่อนจนเนื้อเนียนข้น สีเขียวพาสเทลสวยและหอมละมุน'
+            },
+            {
+                title: 'ลอดช่องน้ำกะทิใบเตย',
+                category: 'dessert',
+                categoryLabel: 'ขนมไทย',
+                role: 'ใช้น้ำใบเตยผสมน้ำปูนใสในตัวแป้งลอดช่อง',
+                technique: 'กวนแป้งข้าวเจ้ากับน้ำใบเตยคั้นสดและน้ำปูนใสจนสุกใส กดผ่านพิมพ์ลงในน้ำเย็นจัดทันที เพื่อล็อกสีเขียวสดและให้เส้นเหนียวนุ่มหนึบ รับประทานคู่กับน้ำกะทิอบควันเทียน'
+            },
+            {
+                title: 'ขนมตะโก้สาคูใบเตย',
+                category: 'dessert',
+                categoryLabel: 'ขนมไทย',
+                role: 'ใช้ใบเตยพับเป็นกระทงและแต่งกลิ่นในตัวขนม',
+                technique: 'พับใบเตยเป็นกระทงสี่เหลี่ยมขนาดพอดีคำ กลิ่นหอมของใบเตยสดจะระเหยซึมเข้าสู่ตัวสาคูและหน้ากะทิเค็มมันโดยตรงเมื่อสัมผัสกับความร้อน'
+            },
+            {
+                title: 'น้ำใบเตยต้มสมุนไพร',
+                category: 'drink',
+                categoryLabel: 'เครื่องดื่ม',
+                role: 'ใช้ใบเตยสดหรือใบตากแห้งต้มเพิ่มกลิ่นในเครื่องดื่ม',
+                technique: 'ล้างใบเตยให้สะอาด มัดเป็นปม ต้มในน้ำเดือดด้วยไฟอ่อน 10–15 นาทีจนได้กลิ่นหอม หากต้องการรสหวานสามารถเติมน้ำตาลตามชอบ'
+            }
+        ];
+
+        function renderRecipes(filter = 'all') {
+            const grid = document.getElementById('recipe-grid');
+            const filtered = filter === 'all' ? recipesData : recipesData.filter(item => item.category === filter);
+
+            grid.innerHTML = filtered.map(recipe => `
+                <article class="tab-fade-in bg-white rounded-3xl p-6 border border-pandan-900/10 shadow-botanical hover:shadow-card-hover transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full bg-pandan-100 text-pandan-900 text-xs font-heading font-semibold">
+                                ${recipe.categoryLabel}
+                            </span>
+                            <svg class="w-5 h-5 text-pandan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21c0-6-3-11-8-14 4 0 8 3 9 8 1-5 5-9 9-10-4 4-7 10-7 16h-3z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-pandan-900 mb-2">${recipe.title}</h4>
+                        <p class="text-xs font-semibold text-pandan-700 mb-3 bg-pandan-50 px-3 py-1.5 rounded-xl border border-pandan-700/15">
+                            บทบาท: ${recipe.role}
+                        </p>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            ${recipe.technique}
+                        </p>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function filterRecipes(category) {
+            // อัปเดตสไตล์ปุ่ม
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = 'filter-btn px-4 py-2 rounded-xl text-sm font-heading font-medium bg-pandan-900 text-white shadow-sm transition-all';
+                } else {
+                    btn.className = 'filter-btn px-4 py-2 rounded-xl text-sm font-heading font-medium bg-white text-gray-700 border border-pandan-900/15 hover:bg-pandan-50 transition-all';
+                }
+            });
+            renderRecipes(category);
+        }
+
+        // 4. เครื่องมือคำนวณสัดส่วนใบเตย (Pandan Ratio Calculator)
+        let currentPurpose = 'tea';
+
+        const calcConfig = {
+            tea: {
+                label: '2. จำนวนแก้วที่ต้องการ (250 มล./แก้ว)',
+                min: 1, max: 12, defaultVal: 4, unit: 'แก้ว',
+                ticks: ['1 แก้ว', '6 แก้ว', '12 แก้ว'],
+                badge: 'สูตรเครื่องดื่มใบเตย',
+                liquidTitle: 'ปริมาณน้ำสะอาด',
+                liquidNote: 'เผื่อน้ำระเหยขณะต้ม ~10%',
+                calculate: (val) => {
+                    const pandanGrams = Math.round(val * 12.5); // ~12.5g ต่อแก้ว
+                    const leaves = Math.max(1, Math.round(pandanGrams / 9));
+                    const waterMl = Math.round(val * 275);
+                    return {
+                        weight: `${pandanGrams} กรัม`,
+                        leaves: `ประมาณ ${leaves}–${leaves + 1} ใบกลาง`,
+                        liquid: `${waterMl.toLocaleString()} มล.`,
+                        instructions: `นำใบเตย ${leaves}–${leaves + 1} ใบ ล้างให้สะอาดแล้วมัดเป็นปม ใส่ลงในน้ำเดือด ${waterMl.toLocaleString()} มล. ลดเป็นไฟอ่อนต้มต่อ 10–15 นาทีจนได้กลิ่นหอมและน้ำเป็นสีเขียวอ่อน ตักใบเตยออกแล้วเสิร์ฟ`
+                    };
+                }
+            },
+            extract: {
+                label: '2. ปริมาณน้ำใบเตยคั้นเข้มข้นที่ต้องการ (มล.)',
+                min: 100, max: 1000, step: 50, defaultVal: 250, unit: 'มล.',
+                ticks: ['100 มล.', '500 มล.', '1,000 มล.'],
+                badge: 'สูตรสีเขียวเข้มทำขนม',
+                liquidTitle: 'น้ำเย็นสำหรับปั่นคั้น',
+                liquidNote: 'ใช้น้ำเย็นจัดเพื่อรักษาสีสด',
+                calculate: (val) => {
+                    // อัตราส่วนมาตรฐานคั้นเข้มข้น: ใบเตย 40 กรัม ต่อ น้ำ 100 มล.
+                    const pandanGrams = Math.round((val / 100) * 40);
+                    const leaves = Math.max(2, Math.round(pandanGrams / 9));
+                    const waterMl = Math.round(val * 1.1); // เผื่อกากซับน้ำ
+                    return {
+                        weight: `${pandanGrams} กรัม`,
+                        leaves: `ประมาณ ${leaves}–${leaves + 2} ใบกลาง`,
+                        liquid: `${waterMl.toLocaleString()} มล.`,
+                        instructions: `ตัดโคนสีขาวของใบเตยทิ้ง หั่นใบเป็นท่อนสั้นประมาณ 1 นิ้ว ปั่นกับน้ำเย็นจัด ${waterMl.toLocaleString()} มล. จนละเอียด แล้วกรองบีบผ่านผ้าขาวบาง 2 ชั้น จะได้น้ำใบเตยสีเขียวเข้มข้นพร้อมใช้ทำขนม`
+                    };
+                }
+            },
+            rice: {
+                label: '2. ปริมาณข้าวสารที่ต้องการหุง (ถ้วยตวง)',
+                min: 1, max: 10, defaultVal: 3, unit: 'ถ้วยตวง',
+                ticks: ['1 ถ้วย', '5 ถ้วย', '10 ถ้วย'],
+                badge: 'สูตรข้าวหอมใบเตย',
+                liquidTitle: 'น้ำสะอาดสำหรับหุงข้าว',
+                liquidNote: 'ปรับเพิ่ม-ลดตามชนิดข้าว',
+                calculate: (val) => {
+                    const pandanGrams = val * 10;
+                    const leaves = Math.max(1, val);
+                    const waterMl = val * 240; // ~1.2 ถ้วยน้ำต่อข้าว 1 ถ้วย
+                    return {
+                        weight: `${pandanGrams} กรัม`,
+                        leaves: `ประมาณ ${leaves}–${leaves + 1} ใบกลาง`,
+                        liquid: `${waterMl.toLocaleString()} มล.`,
+                        instructions: `ซาวข้าวสาร ${val} ถ้วยตวงให้สะอาด เติมน้ำ ${waterMl.toLocaleString()} มล. นำใบเตย ${leaves} ใบมาขยี้เบาๆ แล้วขมวดปมวางลงบนข้าวสารก่อนกดหุง เมื่อข้าวสุกให้พักไว้ 10 นาทีแล้วคีบใบเตยออก`
+                    };
+                }
+            }
+        };
+
+        function setCalcPurpose(purpose) {
+            currentPurpose = purpose;
+            const cfg = calcConfig[purpose];
+
+            // อัปเดตสไตล์ปุ่มวัตถุประสงค์
+            document.querySelectorAll('.purpose-btn').forEach(btn => {
+                if (btn.dataset.purpose === purpose) {
+                    btn.className = 'purpose-btn p-3.5 rounded-2xl border-2 border-pandan-900 bg-pandan-50 text-pandan-900 text-left transition-all';
+                    btn.querySelector('span:last-child').className = 'block text-xs text-pandan-700 mt-0.5';
+                } else {
+                    btn.className = 'purpose-btn p-3.5 rounded-2xl border-2 border-gray-200 bg-white text-gray-700 hover:border-pandan-400 text-left transition-all';
+                    btn.querySelector('span:last-child').className = 'block text-xs text-gray-500 mt-0.5';
+                }
+            });
+
+            // ตั้งค่า Slider ใหม่
+            const slider = document.getElementById('calc-slider');
+            slider.min = cfg.min;
+            slider.max = cfg.max;
+            slider.step = cfg.step || 1;
+            slider.value = cfg.defaultVal;
+
+            document.getElementById('calc-slider-label').textContent = cfg.label;
+            document.getElementById('calc-badge').textContent = cfg.badge;
+            document.getElementById('res-liquid-title').textContent = cfg.liquidTitle;
+            document.getElementById('res-liquid-note').textContent = cfg.liquidNote;
+
+            const ticksContainer = document.getElementById('calc-slider-ticks');
+            ticksContainer.innerHTML = cfg.ticks.map(t => `<span>${t}</span>`).join('');
+
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            const cfg = calcConfig[currentPurpose];
+            const val = Number(document.getElementById('calc-slider').value);
+            const result = cfg.calculate(val);
+
+            document.getElementById('calc-slider-value').textContent = `${val.toLocaleString()} ${cfg.unit}`;
+            document.getElementById('res-pandan-weight').textContent = result.weight;
+            document.getElementById('res-pandan-leaves').textContent = result.leaves;
+            document.getElementById('res-liquid-amount').textContent = result.liquid;
+            document.getElementById('res-instructions').textContent = result.instructions;
+        }
+
+        // คัดลอกผลลัพธ์ลง Clipboard (ใช้ execCommand ตามมาตรฐานเพื่อรองรับ iFrame)
+        function copyRecipeResult() {
+            const badge = document.getElementById('calc-badge').textContent;
+            const amount = document.getElementById('calc-slider-value').textContent;
+            const weight = document.getElementById('res-pandan-weight').textContent;
+            const leaves = document.getElementById('res-pandan-leaves').textContent;
+            const liquidTitle = document.getElementById('res-liquid-title').textContent;
+            const liquid = document.getElementById('res-liquid-amount').textContent;
+            const instructions = document.getElementById('res-instructions').textContent;
+
+            const copyText = `🌿 ${badge} (${amount})\n• ใบเตยสด: ${weight} (${leaves})\n• ${liquidTitle}: ${liquid}\n• วิธีทำ: ${instructions}`;
+
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = copyText;
+            tempTextarea.style.position = 'fixed';
+            tempTextarea.style.opacity = '0';
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+
+            try {
+                document.execCommand('copy');
+                showToast('คัดลอกสัดส่วนและวิธีทำลงคลิปบอร์ดแล้ว');
+            } catch (err) {
+                showToast('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาลองใหม่อีกครั้ง');
+            }
+            document.body.removeChild(tempTextarea);
+        }
+
+        // แสดง Toast แจ้งเตือน
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // เริ่มต้นทำงานเมื่อโหลดหน้าเว็บ
+        document.addEventListener('DOMContentLoaded', () => {
+            renderRecipes('all');
+            updateCalculator();
+        });
+    </script>
+</body>
+</html>
